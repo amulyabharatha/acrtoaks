@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-            docker build . -t mydemoapp:${{ secrets.ACR_REGISTRY_NAME }}.azurecr.io/mydemoapp:${{ github.sha }}
+            docker build . -t mydemoapp:acrtoaks.azurecr.io/mydemoapp:${{ github.sha }}
             docker image ls
     
       - name: Push Docker image to Azure Container Registry
