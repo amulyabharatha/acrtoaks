@@ -19,7 +19,10 @@ jobs:
           password: ${{ secrets.AZ_SP_CLIENT_SECRET }}
 
       - name: Build Docker image
-        run: docker build . -t mydemoapp:latest 
+        run: |
+            docker build . -t mydemoapp:latest \
+            docker image ls
+    
       - name: Push Docker image to Azure Container Registry
         run: |
             docker push ${{ secrets.ACR_REGISTRY_NAME }}.azurecr.io/mydemoapp:latest        
