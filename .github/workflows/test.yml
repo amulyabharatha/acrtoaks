@@ -20,9 +20,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-            docker build . -t mydemoapp:latest \
+            docker build . -t mydemoapp:${{ github.sha }}
             docker image ls
     
       - name: Push Docker image to Azure Container Registry
         run: |
-            docker push ${{ secrets.ACR_REGISTRY_NAME }}.azurecr.io/mydemoapp:latest        
+            docker push ${{ secrets.ACR_REGISTRY_NAME }}.azurecr.io/mydemoapp:${{ github.sha }}
+       
